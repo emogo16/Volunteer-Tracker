@@ -1,9 +1,9 @@
-# The Word Definer
+# Volunteer-Tracker
 
 
 #### By _**Erika Estefania Mogollon**_
 
-#### The Word Definer
+#### Volunteer-Tracker
 ## Technologies Used
 
 * _Git Bash_
