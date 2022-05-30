@@ -1,9 +1,9 @@
+require 'rspec'
+require 'pg'
 require 'project'
 require 'volunteer'
-require 'rspec'
 require 'pry'
-require 'pg'
-require'./db_access.rb'
+require'./test_db_access.rb'
 
 RSpec.configure do |config|
   config.after(:each) do

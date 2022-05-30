@@ -7,6 +7,16 @@ also_reload('lib/**/*.rb')
 require('pg')
 require('./db_access.rb')
 
+get('/results') do
+  erb(:search_results)
+end
+
+# post('/results') do
+#   title = params[:search]
+#   @projects =  Project.search(title) 
+#   erb(:search_results)
+# end
+
 get('/') do
   redirect('/projects')
 end
@@ -33,7 +43,7 @@ get('/projects/:id/edit') do
   erb(:edit_project)
 end
 
-patch('/projects/:id') do
+patch('/projects/:id/edit') do
   @project = Project.find(params[:id].to_i())
   @project.update({:title => params[:title]})
   @projects = Project.all

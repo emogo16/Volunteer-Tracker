@@ -1,4 +1,5 @@
 require('spec_helper')
+# require './test_db_access.rb'
 
 describe Project do
   describe '#title' do
