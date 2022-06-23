@@ -4,8 +4,13 @@ class Volunteer
 
   def initialize(attributes)
     @name = attributes.fetch(:name)
-    @id = attributes.fetch(:id)
     @project_id = attributes.fetch(:project_id)
+    @id = attributes.fetch(:id)
+  end
+
+  def save
+    result = DB.exec("INSERT INTO VOLUNTEERS (name, project_id) VALUES ('#{@name}', '#{@project_id}') RETURNING id;")
+    @id = result.first().fetch("id").to_i
   end
 
   def ==(volunteer_to_compare)
@@ -61,16 +66,11 @@ class Volunteer
     DB.exec("DELETE FROM volunteers WHERE id = #{@id};")
   end
 
-  def self.clear
-    DB.exec("DELETE FROM volunteers *;")
-  end
+  # def self.clear
+  #   DB.exec("DELETE FROM volunteers *;")
+  # end
 
   def project
     Project.find(@project_id)
-  end
-
-  def save
-    result = DB.exec("INSERT INTO VOLUNTEERS (name, project_id) VALUES ('#{@name}', '#{@project_id}') RETURNING id;")
-    @id = result.first().fetch("id").to_i
   end
 end
